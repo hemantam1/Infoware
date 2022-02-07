@@ -6,6 +6,7 @@ import time
 import csv
 import datetime
 
+#Some arguments that help for smooth and faster execution of the script.
 options = Options()
 prefs = {"profile.default_content_setting_values.notifications" : 2,
 	"profile.managed_default_content_settings.images": 2}
