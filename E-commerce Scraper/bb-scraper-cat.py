@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 import time
 import csv
 
+#Some arguments that help for smooth and faster execution of the script.
 options = Options()
 prefs = {"profile.default_content_setting_values.notifications" : 2,
 	"profile.managed_default_content_settings.images": 2}
@@ -25,13 +26,16 @@ headers = ['EAN', 'Name', 'MRP', 'Price']
 page = driver.page_source
 soup = BeautifulSoup(page, 'html.parser')
 
+#Implementing function was causing issues so a simple nested loop structure to generate the product details.
 categories = soup.find('div', class_='uiv2-myaccount-wrapper uiv2-mar-t-35 uiv2-search uiv2-all-categories-wrapper')
 with open('./Generated_Files/bb_scraper_cat.csv', 'w', newline='') as f:
     csvwriter = csv.DictWriter(f, fieldnames=headers)
     csvwriter.writeheader()
+	#Grabs category and subcategory from the website.
     for cat, sub in zip(categories.find_all('div', class_='dp_headding'), categories.find_all('ul', class_='uiv2-search-category')):
         print('Category:'+cat.text.strip())
         a = []
+	#Generates the link to which we have to navigate to.
         for s in sub.find_all('li'):
             link = s.find('a', href=True)
             #print('\tSub-Category:'+s.text.strip())
