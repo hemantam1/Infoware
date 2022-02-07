@@ -27,6 +27,7 @@ url = 'https://www.jiomart.com/c/groceries/bestdeals/bestival-edition-2-main-sal
 info = []
 count = 0
 
+#Links generator.
 def jio_links(driver):
     info = []
     objects = driver.find_elements_by_xpath('//./a[@class="category_name prod-name"]')
@@ -34,6 +35,7 @@ def jio_links(driver):
         info.append(obj.get_attribute('href'))
     return info
 
+#Scrapes all the details from the page.
 def jio_item_scraper(link):
     infor = []
     driver.execute_script("window.open('{}', '_blank')".format(link))
