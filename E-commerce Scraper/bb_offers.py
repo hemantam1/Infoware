@@ -60,29 +60,6 @@ with open('./Generated_Files/Scrapped_Files/bb-offers.csv', 'w', newline='') as 
         n = name.text.strip() if name else "None"
         pincod = sp.find('div', class_='_1N37e')
         pincode = pincod.text.strip() if pincod else "None"
-        """for key, value in pincodes.items():
-            driver.implicitly_wait(1)
-            try:
-                driver.find_element_by_class_name('_1N37e').click() #location
-                driver.implicitly_wait(1)
-            except ElementClickInterceptedException:
-                driver.refresh()
-                driver.implicitly_wait(1)
-                driver.find_element_by_class_name('_1N37e').click()
-                driver.implicitly_wait(1)
-
-            driver.find_element_by_xpath('//*[@id="modal"]/div/div/div[2]/div[1]/span').click() #dropdown list
-            driver.find_element_by_xpath('//*[@id="modal"]/div/div/div[2]/div[1]/input').send_keys(key, Keys.ENTER)#city
-            driver.implicitly_wait(1)
-            if value != '':
-                driver.find_element_by_xpath('//*[@id="modal"]/div/div/div[2]/div[2]/input').send_keys(value)
-                try:
-                    driver.find_element_by_class_name('oXkKp').click()
-                except:
-                    pass
-            driver.implicitly_wait(1)
-            driver.find_element_by_xpath('//*[@id="modal"]/div/div/div[2]/form/button').click()
-            driver.implicitly_wait(1)"""
         m = sp.find('td',class_='_2ifWF')
         mrp = m.text.strip() if m else 'None'
         p = sp.find("td",class_='IyLvo')
