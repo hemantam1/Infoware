@@ -26,6 +26,7 @@ driver.get(url)
 headers = ['Grofers', 'Name', 'Pincode', 'MRP', 'Price']
 count = 0
 
+#Function that implements entering the pincode/city.
 def g_pincodes(city):
     try:
         driver.find_element_by_class_name('Select-placeholder').click().send_keys(city)
@@ -37,6 +38,7 @@ def g_pincodes(city):
         driver.implicitly_wait(3)
         pass
 
+#Product details scraper.
 def g_product_scraper(count, id):
     info = []
     name = products['Name'][count].replace(' ', '-')
@@ -87,20 +89,3 @@ if __name__ == "__main__":
     end = datetime.datetime.now()
     print(end - start)
     pass
-"""na = products['Name'][count].replace(' ', '-')
-driver.implicitly_wait(2)
-driver.execute_script("window.open('https://grofers.com/prn/{}/prid/{}', '_blank')".format(na, i))
-driver.switch_to.window(driver.window_handles[1])
-time.sleep(5)
-
-soup = BeautifulSoup(driver.page_source, 'html.parser')
-grofer = i
-Title = soup.find('h1', class_='pdp-product__name')
-t = Title.text.strip() if Title else 'None'
-MRP = soup.find('span',class_="pdp-product__price--old")
-m = MRP.text.strip().split('\u20b9')[1] if MRP else 'None'
-Price = soup.find('span',class_='pdp-product__price--new')
-p = Price.text.strip().split('\u20b9')[1] if Price else 'None'
-
-driver.close()
-driver.switch_to.window(driver.window_handles[0])"""
